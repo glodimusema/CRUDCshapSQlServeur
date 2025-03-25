@@ -1,0 +1,12 @@
+c:\users\glodi\source\repos\CRUDCshapSQlServeur\CRUDCshapSQlServeur\bin\Debug\CRUDCshapSQlServeur.exe.config
+c:\users\glodi\source\repos\CRUDCshapSQlServeur\CRUDCshapSQlServeur\bin\Debug\CRUDCshapSQlServeur.exe
+c:\users\glodi\source\repos\CRUDCshapSQlServeur\CRUDCshapSQlServeur\bin\Debug\CRUDCshapSQlServeur.pdb
+c:\users\glodi\source\repos\CRUDCshapSQlServeur\CRUDCshapSQlServeur\obj\Debug\CRUDCshapSQlServeur.csprojResolveAssemblyReference.cache
+c:\users\glodi\source\repos\CRUDCshapSQlServeur\CRUDCshapSQlServeur\obj\Debug\CRUDCshapSQlServeur.Form1.resources
+c:\users\glodi\source\repos\CRUDCshapSQlServeur\CRUDCshapSQlServeur\obj\Debug\CRUDCshapSQlServeur.frmCLient.resources
+c:\users\glodi\source\repos\CRUDCshapSQlServeur\CRUDCshapSQlServeur\obj\Debug\CRUDCshapSQlServeur.Properties.Resources.resources
+c:\users\glodi\source\repos\CRUDCshapSQlServeur\CRUDCshapSQlServeur\obj\Debug\CRUDCshapSQlServeur.csproj.GenerateResource.Cache
+c:\users\glodi\source\repos\CRUDCshapSQlServeur\CRUDCshapSQlServeur\obj\Debug\CRUDCshapSQlServeur.csproj.CoreCompileInputs.cache
+c:\users\glodi\source\repos\CRUDCshapSQlServeur\CRUDCshapSQlServeur\obj\Debug\CRUDCshapSQlServeur.exe
+c:\users\glodi\source\repos\CRUDCshapSQlServeur\CRUDCshapSQlServeur\obj\Debug\CRUDCshapSQlServeur.pdb
+C:\Users\Glodi\source\repos\CRUDCshapSQlServeur\CRUDCshapSQlServeur\obj\Debug\CRUDCshapSQlServeur.frmCategorieProduit.resources
