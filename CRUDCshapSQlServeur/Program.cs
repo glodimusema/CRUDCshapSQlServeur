@@ -16,7 +16,7 @@ namespace CRUDCshapSQlServeur
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmCategorieProduit());
+            Application.Run(new frmCLient());
         }
     }
 }

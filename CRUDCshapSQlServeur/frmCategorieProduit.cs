@@ -26,7 +26,7 @@ namespace CRUDCshapSQlServeur
 
         public DataTable loadData()
         {
-            con = new SqlConnection("server=localhost;database=vente_db;uid=sa;pwd=bbbbbb;");
+            con = new SqlConnection(clsConnexion.chemin);
             if (!con.State.ToString().ToLower().Equals("open")) con.Open();
             DataTable table = new DataTable();
             dt = new SqlDataAdapter("select * from tCategorieProduit", con);
@@ -44,7 +44,7 @@ namespace CRUDCshapSQlServeur
 
         private void button2_Click(object sender, EventArgs e)
         {
-            con = new SqlConnection("server=localhost;database=vente_db;uid=sa;pwd=bbbbbb");
+            con = new SqlConnection(clsConnexion.chemin);
             con.Open();
             cmd = new SqlCommand("insert into tCategorieProduit (nom_categorie) values (@nom_categorie)", con);
             cmd.Parameters.AddWithValue("@nom_categorie", txtDesignation.Text);
@@ -54,7 +54,7 @@ namespace CRUDCshapSQlServeur
 
         private void button3_Click(object sender, EventArgs e)
         {
-            con = new SqlConnection("server=localhost;database=vente_db;uid=sa;pwd=bbbbbb");
+            con = new SqlConnection(clsConnexion.chemin);
             con.Open();
             cmd = new SqlCommand("update tCategorieProduit set nom_categorie=@nom_categorie where id=@txtId", con);
             cmd.Parameters.AddWithValue("@nom_categorie", txtDesignation.Text);
@@ -70,7 +70,7 @@ namespace CRUDCshapSQlServeur
 
         private void button4_Click(object sender, EventArgs e)
         {
-            con = new SqlConnection("server=localhost;database=vente_db;uid=sa;pwd=bbbbbb");
+            con = new SqlConnection(clsConnexion.chemin);
             con.Open();
             cmd = new SqlCommand("delete from tCategorieProduit where id=@id", con);
             cmd.Parameters.AddWithValue("@id", txtId.Text);

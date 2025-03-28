@@ -23,16 +23,27 @@ namespace CRUDCshapSQlServeur
         SqlDataAdapter dt = null;
         SqlDataReader dr = null;
 
-        public DataTable loadData()
+
+        public DataTable loadData(string nomTable)
         {
-            con = new SqlConnection("server=localhost;database=vente_db;uid=sa;pwd=bbbbbb;");
+            con = new SqlConnection(clsConnexion.chemin);
             if (!con.State.ToString().ToLower().Equals("open")) con.Open();
             DataTable table = new DataTable();
-            dt = new SqlDataAdapter("select * from tClient", con);
+            dt = new SqlDataAdapter("select * from "+nomTable+"", con);
             dt.Fill(table);
             con.Close();
 
             return table;
+        }
+
+        void SupprimerData(string nomTable,string nomChamp,string value)
+        {
+            con = new SqlConnection(clsConnexion.chemin);
+            con.Open();
+            cmd = new SqlCommand("delete from "+ nomTable + " where "+ nomChamp + "=@id", con);
+            cmd.Parameters.AddWithValue("@id", value);
+            cmd.ExecuteNonQuery();
+            con.Close();
         }
 
         private void label3_Click(object sender, EventArgs e)
@@ -50,15 +61,24 @@ namespace CRUDCshapSQlServeur
 
         private void button2_Click(object sender, EventArgs e)
         {
-            con = new SqlConnection("server=localhost;database=vente_db;uid=sa;pwd=bbbbbb;");
-            //con = new SqlConnection("server=localhost;database=vente_db; Integrated Security=true;");
-            con.Open();
-            cmd = new SqlCommand("insert into tClient (noms,adresse,contact) values (@noms,@adresse,@contact)", con);
-            cmd.Parameters.AddWithValue("@noms", txtNoms.Text);
-            cmd.Parameters.AddWithValue("@adresse", txtAdresse.Text);
-            cmd.Parameters.AddWithValue("@contact", txtContact.Text);
-            cmd.ExecuteNonQuery();
-            con.Close();
+            try
+            {
+                con = new SqlConnection(clsConnexion.chemin);
+                //con = new SqlConnection("server=localhost;database=vente_db; Integrated Security=true;");
+                con.Open();
+                cmd = new SqlCommand("insert into tClient (noms,adresse,contact) values (@noms,@adresse,@contact)", con);
+                cmd.Parameters.AddWithValue("@noms", txtNoms.Text);
+                cmd.Parameters.AddWithValue("@adresse", txtAdresse.Text);
+                cmd.Parameters.AddWithValue("@contact", txtContact.Text);
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            
         }
 
         private void txtAdresse_TextChanged(object sender, EventArgs e)
@@ -68,7 +88,7 @@ namespace CRUDCshapSQlServeur
 
         private void button3_Click(object sender, EventArgs e)
         {
-            con = new SqlConnection("server=localhost;database=vente_db;uid=sa;pwd=bbbbbb;");
+            con = new SqlConnection(clsConnexion.chemin);
             //con = new SqlConnection("server=localhost;database=vente_db; Integrated Security=true;");
             con.Open();
             cmd = new SqlCommand("update tClient set noms=@noms,adresse=@adresse,contact=@contact where id=@id", con);
@@ -82,10 +102,16 @@ namespace CRUDCshapSQlServeur
 
         private void button4_Click(object sender, EventArgs e)
         {
-            con = new SqlConnection("server=localhost;database=vente_db;uid=sa;pwd=bbbbbb;");
-            //con = new SqlConnection("server=localhost;database=vente_db; Integrated Security=true;");
+            con = new SqlConnection(clsConnexion.chemin);
             con.Open();
             cmd = new SqlCommand("delete from tClient where id=@id", con);
+            cmd.Parameters.AddWithValue("@id", txtId.Text);
+            cmd.ExecuteNonQuery();
+            con.Close();
+
+            con = new SqlConnection(clsConnexion.chemin);
+            con.Open();
+            cmd = new SqlCommand("delete from tCategorieProduit where id_cat=@id", con);
             cmd.Parameters.AddWithValue("@id", txtId.Text);
             cmd.ExecuteNonQuery();
             con.Close();
@@ -93,7 +119,7 @@ namespace CRUDCshapSQlServeur
 
         private void frmCLient_Load(object sender, EventArgs e)
         {
-            listeClient.DataSource = loadData();
+            listeClient.DataSource = loadData("tClient");
         }
 
         private void label5_Click(object sender, EventArgs e)
